@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import StopCircleIcon from '@mui/icons-material/StopCircle';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import ReplayCircleFilledIcon from '@mui/icons-material/ReplayCircleFilled';
+import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 
 export default function ControlPanel() {
     const [isPlaying, setIsPlaying] = useState(false)
@@ -43,20 +47,15 @@ export default function ControlPanel() {
         setIsLoop(!isLoop)
     }
   return (
-    <div>
-        <button onClick={()=>{
-            console.log(isPlaying);
-            isPlaying ?
-            pauseAllTracks() :
-            playAllTracks()
-        }
-            }>
-            {isPlaying ? "pause" : "play"}
-        </button>
-        <button onClick={stopAllTracks}>stop</button>
-        <button onClick={loopAllTracks}>
-            {!isLoop ? "noLoop" : "yesLoop"}
-        </button>
-    </div>
+        <div className='controlPanel'>
+                    <StopCircleIcon onClick={stopAllTracks}/>
+                    <div className="playPause">
+                        {isPlaying ?
+                        <PauseCircleIcon onClick={pauseAllTracks}/> : 
+                        <PlayCircleIcon onClick={playAllTracks}/>
+                        }
+                    </div>
+                    <ReplayCircleFilledIcon style={{color : isLoop ? "#2C73D2" : "black"}} className="controlBtn" onClick={loopAllTracks}/>
+        </div>
   )
 }

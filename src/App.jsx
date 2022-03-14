@@ -1,5 +1,5 @@
-import { useState } from "react"
 import ControlPanel from "./components/ControlPanel"
+import Cursor from "./components/Cursor"
 import Row from "./components/Row" 
 import fileNames from "./helpers/fileNames"
 import Colors from "./helpers/tracksColors.json"
@@ -14,7 +14,13 @@ function App() {
   
   return (
     <div className="App">
-      {rowGenerator()}
+      <h1>Loop-Machine</h1>
+      <div className="relative">
+        <Cursor/>
+        <div className="rowRap">
+          {rowGenerator()}
+        </div>
+      </div>
       <ControlPanel/>
     </div>
   );

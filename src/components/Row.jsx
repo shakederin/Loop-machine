@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
-
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 
 export default function Row({track, color}) {
   const [isMuted, setIsMuted] = useState(false)
@@ -9,14 +10,17 @@ export default function Row({track, color}) {
     setIsMuted(!isMuted)
   }
   return (
-    <div style={{backgroundColor :`${color}`}}>
-        <audio  ref={audioElement}
-                className="track" controls
-                src={`../loopTracks/${track}`}>
-        </audio>
-        <div onClick={muteTrack}>
-          {isMuted ? "unmute" : "mute"}
-          </div>
-    </div>
+      <div className='row' style={{backgroundColor :`${color}`}}>
+          <audio  ref={audioElement}
+                  className="track" 
+                  src={`../loopTracks/${track}`}>
+          </audio>
+        <div className='muteBtn'>
+          {isMuted ? 
+          <VolumeOffIcon onClick={muteTrack}/> :
+          <VolumeUpIcon onClick={muteTrack}/>
+          }
+        </div>
+      </div>
   )
 }
