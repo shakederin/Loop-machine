@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TornadoIcon from '@mui/icons-material/Tornado';
 import interact from 'interactjs'
-import { querySelectorAll } from 'dom-helpers';
+
 
 export default function Cursor(){
     const [time, setTime] = useState(0); 
